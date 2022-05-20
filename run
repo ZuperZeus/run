@@ -1,0 +1,32 @@
+#bin/bash
+ext="${$1##*.}"
+name="${$1%.*}"
+fullname=$1
+
+#case
+case $ext in
+        c)
+                gcc -o $name $fullname
+                ./$name
+        cpp)
+                g++ -o $name $fullname
+                ./$name
+        ;;
+        py)
+                python $fullname
+        ;;
+        java)
+                javac $fullname
+                java $name
+        ;;
+        jar)
+                java -jar $fullname
+        ;;
+        js)
+                node $fullname
+        ;;
+        *)
+                echo "Sorry, extension not found"
+        ;;
+
+esac
