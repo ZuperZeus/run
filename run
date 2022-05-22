@@ -1,34 +1,59 @@
-#bin/bash
+#!/bin/bash
 ext="${1##*.}"
 name="${1%.*}"
-fullname=$1
+fullname="$1"
 
 #case
-case $ext in
+case "$ext" in
         c)
-                gcc -o $name $fullname
-                ./$name
+                gcc -o "$name" "$fullname"
+                ./"$name"
         ;;
-        cpp)
-                g++ -o $name $fullname
-                ./$name
-        ;;
-        py)
-                python $fullname
-        ;;
-        java)
-                javac $fullname
+        class)
                 java $name
         ;;
+        cpp)
+                g++ -o "$name" "$fullname"
+                ./"$name"
+        ;;
+        go)
+                go run $fullname
+        ;;
         jar)
-                java -jar $fullname
+                java -jar "$fullname"
+        ;;
+        java)
+                javac "$fullname"
+                java "$name"
         ;;
         js)
-                node $fullname
+                node "$fullname"
+        ;;
+        lua)
+                lua $fullname
+        ;;
+        php)
+                php "$fullname"
+        ;;
+        pl)
+                perl $fullname
+        ;;
+        py)
+                python "$fullname"
+        ;;
+        rb)
+                ruby "$fullname"
+        ;;
+        ts)
+                tsc "$fullname"
+                node "$name".js
+        ;;
+        rs)
+                rust "$fullname"
+                ./"$name"
         ;;
         *)
                 echo "Sorry, extension not found"
         ;;
 
-esac                                                                                                                                                                                                                                   /0.1s
-
+esac
