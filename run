@@ -1,6 +1,6 @@
 #bin/bash
-ext="${$1##*.}"
-name="${$1%.*}"
+ext="${1##*.}"
+name="${1%.*}"
 fullname=$1
 
 #case
@@ -8,6 +8,7 @@ case $ext in
         c)
                 gcc -o $name $fullname
                 ./$name
+        ;;
         cpp)
                 g++ -o $name $fullname
                 ./$name
@@ -29,4 +30,5 @@ case $ext in
                 echo "Sorry, extension not found"
         ;;
 
-esac
+esac                                                                                                                                                                                                                                   /0.1s
+
